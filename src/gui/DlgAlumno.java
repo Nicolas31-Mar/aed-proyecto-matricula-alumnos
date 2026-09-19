@@ -137,22 +137,22 @@ public class DlgAlumno extends JDialog {
 		
 		btnAdicionar = new JButton("Adicionar");
 		btnAdicionar.setFont(new Font("Tahoma", Font.BOLD, 13));
-		btnAdicionar.setBounds(498, 36, 103, 23);
+		btnAdicionar.setBounds(498, 36, 100, 25);
 		contentPanel.add(btnAdicionar);
 		
 		btnConsultar = new JButton("Consultar");
 		btnConsultar.setFont(new Font("Tahoma", Font.BOLD, 13));
-		btnConsultar.setBounds(498, 66, 103, 23);
+		btnConsultar.setBounds(498, 66, 100, 25);
 		contentPanel.add(btnConsultar);
 		
 		btnModificar = new JButton("Modificar");
 		btnModificar.setFont(new Font("Tahoma", Font.BOLD, 13));
-		btnModificar.setBounds(498, 96, 103, 23);
+		btnModificar.setBounds(498, 96, 100, 25);
 		contentPanel.add(btnModificar);
 		
 		btnEliminar = new JButton("Eliminar");
 		btnEliminar.setFont(new Font("Tahoma", Font.BOLD, 13));
-		btnEliminar.setBounds(498, 126, 103, 23);
+		btnEliminar.setBounds(498, 126, 100, 25);
 		contentPanel.add(btnEliminar);
 		
 		scrollPane = new JScrollPane();

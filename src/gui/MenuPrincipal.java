@@ -80,6 +80,7 @@ public class MenuPrincipal extends JFrame implements ActionListener {
 		mnMantenimiento.add(mntmAlumno);
 		
 		mntmCurso = new JMenuItem("Curso");
+		mntmCurso.addActionListener(this);
 		mnMantenimiento.add(mntmCurso);
 		
 		mnRegistro = new JMenu("Registro");
@@ -122,6 +123,10 @@ public class MenuPrincipal extends JFrame implements ActionListener {
         if (e.getSource() == mntmAlumno) {
         	actionPerformedMntmAlumno(e);
         }
+        
+        if (e.getSource() == mntmCurso) {
+            actionPerformedMntmCurso(e);
+        }
     }
 	
 	protected void actionPerformedMntmSalir(ActionEvent e) {
@@ -137,4 +142,10 @@ public class MenuPrincipal extends JFrame implements ActionListener {
         dlg.setLocationRelativeTo(this); // Centra la ventana sobre el menú
         dlg.setVisible(true);            // Abre la ventana de alumno
     }
+	
+	protected void actionPerformedMntmCurso(ActionEvent e) {
+		DlgCurso dlg = new DlgCurso();
+		dlg.setLocationRelativeTo(this);
+		dlg.setVisible(true);
+	}
 }
