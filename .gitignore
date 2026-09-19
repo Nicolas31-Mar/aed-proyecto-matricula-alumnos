@@ -1,0 +1,20 @@
+# Archivos compilados de Java
+*.class
+bin/
+build/
+dist/
+out/
+target/
+
+# Archivos de configuración de IDEs (Eclipse)
+.classpath
+.project
+.settings/
+.metadata/
+
+# Archivos temporales y del sistema
+*.log
+*.tmp
+.DS_Store
+Thumbs.db
+Desktop.ini
