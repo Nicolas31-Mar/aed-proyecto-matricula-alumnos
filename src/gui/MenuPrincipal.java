@@ -87,6 +87,7 @@ public class MenuPrincipal extends JFrame implements ActionListener {
 		menuBar.add(mnRegistro);
 		
 		mntmMatricula = new JMenuItem("Matrícula");
+		mntmMatricula.addActionListener(this);
 		mnRegistro.add(mntmMatricula);
 		
 		mntmRetiro = new JMenuItem("Retiro");
@@ -127,6 +128,10 @@ public class MenuPrincipal extends JFrame implements ActionListener {
         if (e.getSource() == mntmCurso) {
             actionPerformedMntmCurso(e);
         }
+        
+        if (e.getSource() == mntmMatricula) {
+        	actionPerformedmntmMatricula(e);
+        }
     }
 	
 	protected void actionPerformedMntmSalir(ActionEvent e) {
@@ -145,6 +150,12 @@ public class MenuPrincipal extends JFrame implements ActionListener {
 	
 	protected void actionPerformedMntmCurso(ActionEvent e) {
 		DlgCurso dlg = new DlgCurso();
+		dlg.setLocationRelativeTo(this);
+		dlg.setVisible(true);
+	}
+	
+	protected void actionPerformedmntmMatricula(ActionEvent e) {
+		DlgMatricula dlg = new DlgMatricula();
 		dlg.setLocationRelativeTo(this);
 		dlg.setVisible(true);
 	}
