@@ -89,21 +89,25 @@ public class MenuPrincipal extends JFrame implements ActionListener {
 		mnRegistro.add(mntmMatricula);
 		
 		mntmRetiro = new JMenuItem("Retiro");
+		mntmRetiro.addActionListener(this);
 		mnRegistro.add(mntmRetiro);
 		
 		mnConsulta = new JMenu("Consulta");
 		menuBar.add(mnConsulta);
 		
 		mntmConsultaAlumnosCursos = new JMenuItem("Alumnos y Cursos");
+		mntmConsultaAlumnosCursos.addActionListener(this);
 		mnConsulta.add(mntmConsultaAlumnosCursos);
 		
 		mntmConsultaMatriculasRetiros = new JMenuItem("Matrículas y Retiros");
+		mntmConsultaMatriculasRetiros.addActionListener(this);
 		mnConsulta.add(mntmConsultaMatriculasRetiros);
 		
 		mnReporte = new JMenu("Reporte");
 		menuBar.add(mnReporte);
 		
 		mntmGenReportes = new JMenuItem("Generar Reportes");
+		mntmGenReportes.addActionListener(this);
 		mnReporte.add(mntmGenReportes);
 
 	}
@@ -116,13 +120,23 @@ public class MenuPrincipal extends JFrame implements ActionListener {
         if (e.getSource() == mntmAlumno) {
         	actionPerformedMntmAlumno(e);
         }
-        
         if (e.getSource() == mntmCurso) {
             actionPerformedMntmCurso(e);
         }
-        
         if (e.getSource() == mntmMatricula) {
         	actionPerformedmntmMatricula(e);
+        }
+        if (e.getSource() == mntmRetiro) {
+        	actionPerformedMntmRetiro(e);
+        }
+        if (e.getSource() == mntmConsultaAlumnosCursos) {
+        	actionPerformedMntmConsultaAlumnosCursos(e);
+        }
+        if (e.getSource() == mntmConsultaMatriculasRetiros) {
+        	actionPerformedMntmConsultaMatriculasRetiros(e);
+        }
+        if (e.getSource() == mntmGenReportes) {
+        	actionPerformedMntmGenReportes(e);
         }
     }
 	
@@ -148,6 +162,30 @@ public class MenuPrincipal extends JFrame implements ActionListener {
 	
 	protected void actionPerformedmntmMatricula(ActionEvent e) {
 		DlgMatricula dlg = new DlgMatricula();
+		dlg.setLocationRelativeTo(this);
+		dlg.setVisible(true);
+	}
+
+	protected void actionPerformedMntmRetiro(ActionEvent e) {
+		DlgRetiro dlg = new DlgRetiro();
+		dlg.setLocationRelativeTo(this);
+		dlg.setVisible(true);
+	}
+
+	protected void actionPerformedMntmConsultaAlumnosCursos(ActionEvent e) {
+		DlgConsultaAlumnosCursos dlg = new DlgConsultaAlumnosCursos();
+		dlg.setLocationRelativeTo(this);
+		dlg.setVisible(true);
+	}
+
+	protected void actionPerformedMntmConsultaMatriculasRetiros(ActionEvent e) {
+		DlgConsultaMatriculasRetiros dlg = new DlgConsultaMatriculasRetiros();
+		dlg.setLocationRelativeTo(this);
+		dlg.setVisible(true);
+	}
+
+	protected void actionPerformedMntmGenReportes(ActionEvent e) {
+		DlgReportes dlg = new DlgReportes();
 		dlg.setLocationRelativeTo(this);
 		dlg.setVisible(true);
 	}
