@@ -22,9 +22,7 @@ public class MenuPrincipal extends JFrame implements ActionListener {
 	private JMenu mnConsulta;
 	private JMenu mnMantenimiento;
 	private JMenu mnRegistro;
-	private JMenuItem mntmRepPendiente;
-	private JMenuItem mntmRepVigente;
-	private JMenuItem mntmRepPorCurso;
+	private JMenuItem mntmGenReportes;
 	private JMenuItem mntmSalir;
 	private JMenuItem mntmAlumno;
 	private JMenuItem mntmCurso;
@@ -105,14 +103,8 @@ public class MenuPrincipal extends JFrame implements ActionListener {
 		mnReporte = new JMenu("Reporte");
 		menuBar.add(mnReporte);
 		
-		mntmRepPendiente = new JMenuItem("Alumnos con matrícula pendiente");
-		mnReporte.add(mntmRepPendiente);
-		
-		mntmRepVigente = new JMenuItem("Alumnos con matrícula vigente");
-		mnReporte.add(mntmRepVigente);
-		
-		mntmRepPorCurso = new JMenuItem("Alumnos matriculados por curso");
-		mnReporte.add(mntmRepPorCurso);
+		mntmGenReportes = new JMenuItem("Generar Reportes");
+		mnReporte.add(mntmGenReportes);
 
 	}
 	
