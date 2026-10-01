@@ -2,14 +2,13 @@ package clases;
 
 public class Matricula {
 	
-	private int numMatricula, codAlumno, codCurso;
+	private int numMatricula, codAlumno, codSeccion;
 	private String fecha, hora;
 	
-	public Matricula(int numMatricula, int codAlumno, int codCurso, String fecha, String hora) {
-		super();
+	public Matricula(int numMatricula, int codAlumno, int codSeccion, String fecha, String hora) {
 		this.numMatricula = numMatricula;
 		this.codAlumno = codAlumno;
-		this.codCurso = codCurso;
+		this.codSeccion = codSeccion;
 		this.fecha = fecha;
 		this.hora = hora;
 	}
@@ -30,12 +29,12 @@ public class Matricula {
 		this.codAlumno = codAlumno;
 	}
 
-	public int getCodCurso() {
-		return codCurso;
+	public int getCodSeccion() {
+		return codSeccion;
 	}
 
-	public void setCodCurso(int codCurso) {
-		this.codCurso = codCurso;
+	public void setCodSeccion(int codSeccion) {
+		this.codSeccion = codSeccion;
 	}
 
 	public String getFecha() {

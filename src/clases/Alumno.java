@@ -6,7 +6,6 @@ public class Alumno {
 	private String nombres, apellidos, dni;
 	
 	public Alumno(int codAlumno, int edad, int celular, int estado, String nombres, String apellidos, String dni) {
-		super();
 		this.codAlumno = codAlumno;
 		this.edad = edad;
 		this.celular = celular;

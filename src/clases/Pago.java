@@ -1,23 +1,25 @@
 package clases;
 
-public class Retiro {
-	
-	private int numRetiro, numMatricula;
+public class Pago {
+
+	private int numPago, numMatricula;
+	private double monto;
 	private String fecha, hora;
-	
-	public Retiro(int numRetiro, int numMatricula, String fecha, String hora) {
-		this.numRetiro = numRetiro;
+
+	public Pago(int numPago, int numMatricula, double monto, String fecha, String hora) {
+		this.numPago = numPago;
 		this.numMatricula = numMatricula;
+		this.monto = monto;
 		this.fecha = fecha;
 		this.hora = hora;
 	}
 
-	public int getNumRetiro() {
-		return numRetiro;
+	public int getNumPago() {
+		return numPago;
 	}
 
-	public void setNumRetiro(int numRetiro) {
-		this.numRetiro = numRetiro;
+	public void setNumPago(int numPago) {
+		this.numPago = numPago;
 	}
 
 	public int getNumMatricula() {
@@ -26,6 +28,14 @@ public class Retiro {
 
 	public void setNumMatricula(int numMatricula) {
 		this.numMatricula = numMatricula;
+	}
+
+	public double getMonto() {
+		return monto;
+	}
+
+	public void setMonto(double monto) {
+		this.monto = monto;
 	}
 
 	public String getFecha() {
@@ -43,6 +53,4 @@ public class Retiro {
 	public void setHora(String hora) {
 		this.hora = hora;
 	}
-	
-	
 }

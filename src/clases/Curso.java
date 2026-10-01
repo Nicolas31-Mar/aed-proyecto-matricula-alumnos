@@ -7,7 +7,6 @@ public class Curso {
 	
 	
 	public Curso(int codCurso, int grado, int nivel, int horas, String asignatura) {
-		super();
 		this.codCurso = codCurso;
 		this.grado = grado;
 		this.nivel = nivel;
