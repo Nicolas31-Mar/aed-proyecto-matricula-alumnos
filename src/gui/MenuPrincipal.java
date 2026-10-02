@@ -119,6 +119,12 @@ public class MenuPrincipal extends JFrame {
 		btnApoderados.setUI(new BasicButtonUI());
 		
 		btnCursos = new JButton("Cursos");
+		btnCursos.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				CardLayout tarjetas = (CardLayout) pnlContenido.getLayout();
+				tarjetas.show(pnlContenido,"Cursos");
+			}
+		});
 		btnCursos.setFont(new Font("Tahoma", Font.BOLD, 11));
 		btnCursos.setForeground(new Color(255, 255, 255));
 		btnCursos.setBackground(new Color(52, 73, 102));
@@ -127,6 +133,12 @@ public class MenuPrincipal extends JFrame {
 		btnCursos.setUI(new BasicButtonUI());
 		
 		btnDocentes = new JButton("Docentes");
+		btnDocentes.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				CardLayout tarjetas = (CardLayout) pnlContenido.getLayout();
+				tarjetas.show(pnlContenido, "Docentes");
+			}
+		});
 		btnDocentes.setFont(new Font("Tahoma", Font.BOLD, 11));
 		btnDocentes.setForeground(new Color(255, 255, 255));
 		btnDocentes.setBackground(new Color(52, 73, 102));
@@ -163,6 +175,12 @@ public class MenuPrincipal extends JFrame {
 		btnMatriculas.setUI(new BasicButtonUI());
 		
 		btnRetiros = new JButton("Retiros");
+		btnRetiros.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				CardLayout tarjetas = (CardLayout) pnlContenido.getLayout();
+				tarjetas.show(pnlContenido, "Retiros");
+			}
+		});
 		btnRetiros.setFont(new Font("Tahoma", Font.BOLD, 11));
 		btnRetiros.setForeground(new Color(255, 255, 255));
 		btnRetiros.setBackground(new Color(52, 73, 102));
@@ -171,6 +189,12 @@ public class MenuPrincipal extends JFrame {
 		btnRetiros.setUI(new BasicButtonUI());
 		
 		btnPagos = new JButton("Pagos");
+		btnPagos.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				CardLayout tarjetas = (CardLayout) pnlContenido.getLayout();
+				tarjetas.show(pnlContenido, "Pagos");
+			}
+		});
 		btnPagos.setFont(new Font("Tahoma", Font.BOLD, 11));
 		btnPagos.setForeground(new Color(255, 255, 255));
 		btnPagos.setBackground(new Color(52, 73, 102));
@@ -199,5 +223,10 @@ public class MenuPrincipal extends JFrame {
 		pnlContenido.add(new PanelSeccion(), "Seccion");
 		pnlContenido.add(new PanelAlumno(), "Alumnos");
 		pnlContenido.add(new PanelApoderado(), "Apoderados");
+		pnlContenido.add(new PanelCurso(), "Cursos");
+		pnlContenido.add(new PanelDocente(), "Docentes");
+		pnlContenido.add(new PanelRetiro(), "Retiros");
+		pnlContenido.add(new PanelPago(), "Pagos");
+		
 	}
 }
