@@ -11,6 +11,9 @@ import java.awt.Dimension;
 import javax.swing.JTable;
 import javax.swing.JScrollPane;
 import javax.swing.table.DefaultTableModel;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import arreglos.ArregloSeccion;
 
 public class PanelMatricula extends JPanel {
 
@@ -33,6 +36,7 @@ public class PanelMatricula extends JPanel {
 	private JButton btnLimpiar;
 	private JScrollPane scrollMatriculas;
 	private JTable tblMatriculas;
+	private ArregloSeccion as;
 
 	/**
 	 * Create the panel.
@@ -122,6 +126,15 @@ public class PanelMatricula extends JPanel {
 		btnEliminar.setUI(new BasicButtonUI());
 		
 		btnLimpiar = new JButton("Limpiar");
+		btnLimpiar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				txtNumMatricula.setText("");
+				txtCodAlumno.setText("");
+				txtCodSeccion.setText("");
+				txtFecha.setText("");
+				txtHora.setText("");
+			}
+		});
 		btnLimpiar.setForeground(new Color(255, 255, 255));
 		btnLimpiar.setBounds(490, 252, 105, 34);
 		btnLimpiar.setBackground(new Color(95, 105, 115));
@@ -143,4 +156,9 @@ public class PanelMatricula extends JPanel {
 		scrollMatriculas.setViewportView(tblMatriculas);
 
 	}
+	
+	public void setArregloSeccion(ArregloSeccion as) {
+		this.as = as;
+	}
+	
 }

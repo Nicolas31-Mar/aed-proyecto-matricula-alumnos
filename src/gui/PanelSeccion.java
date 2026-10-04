@@ -11,6 +11,9 @@ import javax.swing.JButton;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import arreglos.ArregloSeccion;
 
 public class PanelSeccion extends JPanel {
 
@@ -33,6 +36,7 @@ public class PanelSeccion extends JPanel {
 	private JButton btnLimpiar;
 	private JScrollPane scrollSecciones;
 	private JTable tblSecciones;
+	private ArregloSeccion as;
 
 	/**
 	 * Create the panel.
@@ -122,6 +126,15 @@ public class PanelSeccion extends JPanel {
 		btnEliminar.setUI(new BasicButtonUI());
 		
 		btnLimpiar = new JButton("Limpiar");
+		btnLimpiar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				txtHorario.setText("");
+				txtCodSeccion.setText("");
+				txtCodDocente.setText("");
+				txtCodCurso.setText("");
+				txtAula.setText("");
+			}
+		});
 		btnLimpiar.setForeground(new Color(255, 255, 255));
 		btnLimpiar.setBounds(490, 252, 105, 34);
 		btnLimpiar.setBackground(new Color(95, 105, 115));
@@ -141,6 +154,10 @@ public class PanelSeccion extends JPanel {
 			}
 		));
 		scrollSecciones.setViewportView(tblSecciones);
+	}
+	
+	public void setArregloSeccion(ArregloSeccion as) {
+		this.as = as;
 	}
 
 }

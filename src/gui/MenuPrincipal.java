@@ -15,6 +15,7 @@ import javax.swing.plaf.basic.BasicButtonUI;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.CardLayout;
+import arreglos.ArregloSeccion;
 
 public class MenuPrincipal extends JFrame {
 
@@ -218,9 +219,14 @@ public class MenuPrincipal extends JFrame {
 		pnlContenido = new JPanel();
 		contentPane.add(pnlContenido, BorderLayout.CENTER);
 		pnlContenido.setLayout(new CardLayout(0, 0));
+		ArregloSeccion as = new ArregloSeccion();
 		pnlContenido.add(new PanelInicio(), "Inicio");
-		pnlContenido.add(new PanelMatricula(), "Matriculas");
-		pnlContenido.add(new PanelSeccion(), "Seccion");
+		PanelMatricula panelMatricula = new PanelMatricula();
+		panelMatricula.setArregloSeccion(as);
+		pnlContenido.add(panelMatricula, "Matriculas");
+		PanelSeccion panelSeccion = new PanelSeccion();
+		panelSeccion.setArregloSeccion(as);
+		pnlContenido.add(panelSeccion, "Seccion");
 		pnlContenido.add(new PanelAlumno(), "Alumnos");
 		pnlContenido.add(new PanelApoderado(), "Apoderados");
 		pnlContenido.add(new PanelCurso(), "Cursos");
