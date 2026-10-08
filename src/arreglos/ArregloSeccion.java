@@ -6,6 +6,11 @@ import clases.Seccion;
 public class ArregloSeccion {
 	private ArrayList<Seccion> secciones = new ArrayList<Seccion>();
 	
+	public ArregloSeccion() {
+		adicionar(new Seccion(101, 1, 1, "A-101", "Lunes 08:00-10:00"));
+	    adicionar(new Seccion(102, 2, 2, "A-102", "Martes 10:00-12:00"));
+	}
+	
 	public boolean adicionar(Seccion seccion) {
 		if(buscar(seccion.getCodSeccion()) != null) {
 			return false;
