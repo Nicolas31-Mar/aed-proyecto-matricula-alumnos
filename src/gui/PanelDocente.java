@@ -1,3 +1,4 @@
+
 package gui;
 
 import javax.swing.JPanel;
@@ -12,6 +13,10 @@ import javax.swing.plaf.basic.BasicButtonUI;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.JOptionPane;
+
+import arreglos.ArregloDocente;
+import clases.Docente;
 
 public class PanelDocente extends JPanel {
 
@@ -37,10 +42,16 @@ public class PanelDocente extends JPanel {
 	private JScrollPane scrollDocentes;
 	private JTable tblDocentes;
 
+	private ArregloDocente ad;
+	private DefaultTableModel modelo;
+
 	/**
 	 * Create the panel.
 	 */
 	public PanelDocente() {
+
+		ad = new ArregloDocente();
+
 		setBackground(new Color(245, 247, 250));
 		setPreferredSize(new Dimension(650, 530));
 		setLayout(null);
@@ -153,5 +164,205 @@ public class PanelDocente extends JPanel {
 			}
 		));
 		scrollDocentes.setViewportView(tblDocentes);
+
+		modelo = (DefaultTableModel) tblDocentes.getModel();
+
+		btnAdicionar.addActionListener(e -> adicionar());
+		btnConsultar.addActionListener(e -> consultar());
+		btnModificar.addActionListener(e -> modificar());
+		btnEliminar.addActionListener(e -> eliminar());
+		btnLimpiar.addActionListener(e -> limpiar());
+
+		listar();
+	}
+
+	private void adicionar() {
+
+		try {
+			Docente docente = leerDatos();
+
+			if (ad.adicionar(docente)) {
+				listar();
+				limpiar();
+				mensaje("Docente registrado correctamente.");
+			} else {
+				mensaje("Ya existe un docente con ese código.");
+			}
+
+		} catch (IllegalArgumentException ex) {
+			mensaje(ex.getMessage());
+		}
+	}
+
+	private void consultar() {
+
+		try {
+			int codigo = leerCodigo();
+			Docente docente = ad.buscar(codigo);
+
+			if (docente == null) {
+				mensaje("No existe un docente con ese código.");
+				return;
+			}
+
+			txtNombres.setText(docente.getNombres());
+			txtApellidos.setText(docente.getApellidos());
+			txtDni.setText(docente.getDni());
+			txtCelular.setText(String.valueOf(docente.getCelular()));
+			txtEspecialidad.setText(docente.getEspecialidad());
+
+		} catch (IllegalArgumentException ex) {
+			mensaje(ex.getMessage());
+		}
+	}
+
+	private void modificar() {
+
+		try {
+			Docente docente = leerDatos();
+
+			if (ad.modificar(docente)) {
+				listar();
+				limpiar();
+				mensaje("Docente modificado correctamente.");
+			} else {
+				mensaje("No existe un docente con ese código.");
+			}
+
+		} catch (IllegalArgumentException ex) {
+			mensaje(ex.getMessage());
+		}
+	}
+
+	private void eliminar() {
+
+		try {
+			int codigo = leerCodigo();
+
+			if (ad.buscar(codigo) == null) {
+				mensaje("No existe un docente con ese código.");
+				return;
+			}
+
+			int respuesta = JOptionPane.showConfirmDialog(
+				this,
+				"¿Desea eliminar el docente?",
+				"Confirmar eliminación",
+				JOptionPane.YES_NO_OPTION
+			);
+
+			if (respuesta == JOptionPane.YES_OPTION) {
+				ad.eliminar(codigo);
+				listar();
+				limpiar();
+				mensaje("Docente eliminado correctamente.");
+			}
+
+		} catch (IllegalArgumentException ex) {
+			mensaje(ex.getMessage());
+		}
+	}
+
+	private int leerCodigo() {
+
+		try {
+			int codigo = Integer.parseInt(
+				txtCodDocente.getText().trim()
+			);
+
+			if (codigo <= 0) {
+				throw new IllegalArgumentException(
+					"El código debe ser mayor que cero."
+				);
+			}
+
+			return codigo;
+
+		} catch (NumberFormatException ex) {
+			throw new IllegalArgumentException(
+				"Ingrese un código de docente válido."
+			);
+		}
+	}
+
+	private Docente leerDatos() {
+
+		int codigo = leerCodigo();
+
+		String nombres = txtNombres.getText().trim();
+		String apellidos = txtApellidos.getText().trim();
+		String dni = txtDni.getText().trim();
+		String textoCelular = txtCelular.getText().trim();
+		String especialidad = txtEspecialidad.getText().trim();
+
+		if (nombres.isEmpty() || apellidos.isEmpty()) {
+			throw new IllegalArgumentException(
+				"Ingrese los nombres y apellidos."
+			);
+		}
+
+		if (!dni.matches("\\d{8}")) {
+			throw new IllegalArgumentException(
+				"El DNI debe contener 8 dígitos."
+			);
+		}
+
+		if (!textoCelular.matches("9\\d{8}")) {
+			throw new IllegalArgumentException(
+				"El celular debe tener 9 dígitos y comenzar con 9."
+			);
+		}
+
+		if (especialidad.isEmpty()) {
+			throw new IllegalArgumentException(
+				"Ingrese la especialidad del docente."
+			);
+		}
+
+		int celular = Integer.parseInt(textoCelular);
+
+		return new Docente(
+			codigo,
+			nombres,
+			apellidos,
+			dni,
+			celular,
+			especialidad
+		);
+	}
+
+	private void listar() {
+
+		modelo.setRowCount(0);
+
+		for (int i = 0; i < ad.tamanio(); i++) {
+
+			Docente docente = ad.obtener(i);
+
+			modelo.addRow(new Object[] {
+				docente.getCodDocente(),
+				docente.getNombres(),
+				docente.getApellidos(),
+				docente.getDni(),
+				docente.getCelular(),
+				docente.getEspecialidad()
+			});
+		}
+	}
+
+	private void limpiar() {
+
+		txtCodDocente.setText("");
+		txtNombres.setText("");
+		txtApellidos.setText("");
+		txtDni.setText("");
+		txtCelular.setText("");
+		txtEspecialidad.setText("");
+
+		txtCodDocente.requestFocus();
+	}
+
+	private void mensaje(String texto) {
+		JOptionPane.showMessageDialog(this, texto);
 	}
 }
