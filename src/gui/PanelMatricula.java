@@ -14,6 +14,8 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import arreglos.ArregloSeccion;
+import arreglos.ArregloMatricula;
+
 
 public class PanelMatricula extends JPanel {
 
@@ -37,6 +39,7 @@ public class PanelMatricula extends JPanel {
 	private JScrollPane scrollMatriculas;
 	private JTable tblMatriculas;
 	private ArregloSeccion as;
+	private ArregloMatricula am;
 
 	/**
 	 * Create the panel.
@@ -159,6 +162,10 @@ public class PanelMatricula extends JPanel {
 	
 	public void setArregloSeccion(ArregloSeccion as) {
 		this.as = as;
+	}
+	
+	public void setArregloMatricula(ArregloMatricula am) {
+		this.am = am;
 	}
 	
 }
